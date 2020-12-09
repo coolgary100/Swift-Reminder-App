@@ -51,11 +51,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "normalCell", for: indexPath)
         
         switch indexPath.section {
         case 0:
             cell.textLabel?.text = dailyTasks[indexPath.row]
+            cell.imageView?.image = UIImage(named: "clock")
+            cell.accessoryType = .disclosureIndicator
+            cell.detailTextLabel?.text = "This is some text"
         case 1:
             cell.textLabel?.text = weeklyTasks[indexPath.row]
         case 2:
